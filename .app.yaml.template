@@ -1,0 +1,25 @@
+application: app-id
+version: app-version
+runtime: python-version
+api_version: api-version
+threadsafe: true
+
+handlers:
+- url: /css
+  static_dir: css
+
+- url: /img
+  static_dir: img
+
+- url: /font_awesome
+  static_dir: font_awesome
+
+- url: /js
+  static_dir: js
+
+- url: /.*
+  script: flying_llama.app
+
+libraries:
+- name: jinja2
+  version: latest
