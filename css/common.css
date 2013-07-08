@@ -1,0 +1,264 @@
+@import url("bootstrap.css");
+@import url("bootstrap-responsive.css");
+@import url("validate.css");
+@import url("jquery-ui/jquery-ui.css");
+
+
+body {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #cbf3ff;
+    background-image: url("../img/sky_bg.png");
+}
+
+.llama-logo-image {
+    display: inline-block;
+    background-image: url("../img/flying-llama.png");
+    background-size: 64px 64px;
+    height: 64px;
+    width: 64px;
+
+    border-style: none;
+    border-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.llama-logo-area {
+    display: inline-block;
+    color: #333333;
+}
+
+.llama-logo-area:hover {
+    color: #333333;
+}
+
+.llama-logo-text {
+    display: inline-block;
+    margin-left: 1.5em;
+}
+
+.llama-logo-text h1 {
+    font-size: 26pt;
+    margin: 0;
+    padding: 0;
+}
+
+.llama-logo-text h2 {
+    color: #888888;
+    font-size: 14pt;
+    font-weight: normal;
+    margin: -0.4em 0 0 2em;
+    padding: 0;
+    vertical-align: top;
+}
+
+.page-header {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    padding-top: 10px;
+    border: none;
+    background-image: url("../img/cloud_v3.png");
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    height: 115px;
+}
+
+h2 small {
+    font-size: 70%;
+    color:rgb(194,174,93);
+}
+
+.mountains {
+    vertical-align: bottom;
+    height: 200px;
+    margin: 0;
+    background-image: url("../img/seamless_mountains.png");
+    background-repeat: repeat;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+.subtitle {
+    font-size: 15pt;
+    color: gray;
+}
+
+.input-number {
+    width: 1em;
+}
+
+.spaced {
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+}
+
+.logo-image {
+    position: relative;
+    left: 20px;
+    top: 15px;
+}
+
+.block, .breadcrumb, .mini-container, .vuelo {
+    background-color: white;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+a:active, a:focus {
+    outline: none !important;
+}
+
+.breadcrumb {
+    margin-bottom: 0.7em;
+}
+
+.criteria-list > li {
+    display: inline;
+}
+ul.criteria-list {
+    position: relative;
+    right: 24px;
+}
+
+.block.mini-container {
+    padding: 5px 5px 1px 3px;
+    margin-bottom: 10px;
+    color: #777777;
+}
+
+.block.edit-search-box {
+    margin-bottom: 10px;
+    padding-left: 1em;
+    padding-bottom: 0.5em;
+}
+#panel-index{
+    padding: 2.5em;
+    padding-bottom: 4.5em;
+}
+.main-panel {
+    padding: 2em 2em 1.5em 2em;
+    margin-bottom: 30px;
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    color: inherit;
+}
+label{
+    margin-right: 1em;
+}
+
+.main-panel label {
+    font-size: 16pt;
+}
+
+.less-important label {
+    font-size: 12pt;
+}
+
+.block.lat-panel {
+    padding: 40px;
+    padding-top: 20px;
+    border-radius:6px;
+    margin-bottom:10px;
+}
+
+.block.lat-panel h2, .block.lat-panel h4 {
+    text-align: center;
+}
+.hidden {
+    display: none;
+}
+#sort-buttons button {
+    width: 100px;
+}
+#airline-filter, #time-filter, #filter-button {
+    width: 200px;
+}
+#spinner {
+    width: 170px;
+}
+
+hr {
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+
+.well {
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #bfbfbf;
+}
+
+
+.no-display {
+    display: none;
+}
+
+
+.icon-info-sign {
+    color: #0028a4;
+}
+
+.underline {
+    text-decoration:underline;
+}
+
+
+
+#price-detail{
+    padding-top: 50px;
+}
+
+.table {
+    display: table;
+}
+
+.table-row {
+    display: table-row;
+}
+
+.table-cell {
+    display: table-cell;
+}
+
+
+.less-important {
+    font-size: 80%;
+}
+
+
+.ui-datepicker {
+    font-size: 90%;
+    position: relative;
+    z-index: 99999999999999;
+}
+
+
+#main-buttons, #main-buttons-div{
+    margin-left: 17.5%;
+    font-size: 1.1em;
+}
+
+.icon-search, .icon-shopping-card{
+    vertical-align: baseline;    
+}
+
+.btn-group > .btn{
+    position:static;
+}
+
+#main-buttons2, #main-buttons2-div{
+    margin-left: 250px;
+}
+
+#deals-main {
+    min-height: 504px;
+}

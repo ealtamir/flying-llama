@@ -1,0 +1,48 @@
+input.error,select.error {
+    border-color: #b94a48;
+    border-width: 2px;
+    background-color: rgba(255,0,0,.03);
+}
+
+
+input.ok {
+    border-color: rgba(0,100,0,1);
+}
+
+
+.alert {
+	padding-top: 0.15em;
+	padding-bottom: 0.15em;
+	display: none;
+}
+
+.error-message {
+    font-size: 12pt;
+    color: #b94a48;
+    vertical-align: middle;
+    display: none;
+}
+
+p.input-message {
+    font-size: 8pt;
+    color: #ff0000;
+    height: 15px;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 10px;
+}
+
+input.margin-bottom0{
+    margin-bottom: 0;
+}
+
+p.hidden{
+    display: none;
+}
+
+div.input-messages{
+    height: 20px;
+    border-color: green;
+    padding-bottom: 20px;
+    padding-top: 0;
+}

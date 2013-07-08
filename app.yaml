@@ -5,5 +5,21 @@ api_version: 1
 threadsafe: true
 
 handlers:
+- url: /css
+  static_dir: css
+
+- url: /img
+  static_dir: img
+
+- url: /font_awesome
+  static_dir: font_awesome
+
+- url: /js
+  static_dir: js
+
 - url: /.*
-  script: flying_python.app
+  script: flying_llama.app
+
+libraries:
+- name: jinja2
+  version: latest

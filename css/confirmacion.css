@@ -1,0 +1,22 @@
+.conf-click{
+	font-size: 0.8em;
+}
+#conf-ida-div,#conf-vuelta-div,#conf-passengers-div,#conf-well,#conf-cc-div,#conf-contact-div{
+	padding: 10px;
+}
+
+.displaynone{
+	display:none;
+}
+.table-min{
+	min-width: 0px;
+}
+
+td{
+	min-width: 15em;
+	max-width: 15em;
+}
+
+.well {
+	margin-bottom: 4em;
+}
