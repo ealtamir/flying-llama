@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta name="generator" content=
-  "HTML Tidy for Mac OS X (vers 25 March 2009), see www.w3.org">
-  <meta charset="utf-8">
-
+    <meta charset="utf-8">
     <title>Flying Llama!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/common.css" rel="stylesheet" media="screen" type="text/css">
     <link href="css/results.css" rel="stylesheet" media="screen" type="text/css">
     <link rel="icon" href="img/favicon.png">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-
 </head>
 
 <body>
@@ -28,498 +24,274 @@
         </div>
     </div>
 
-  <div class="mountains"></div>
 
-  <div class="container">
-    <ul class="breadcrumb">
-      <li><a href="./index.html"><i class="icon-plane"></i> Inicio</a> <span class=
-      "divider">/</span></li>
-      <li class="active"><i class="icon-search"></i> Búsqueda</li>
-    </ul>
-    <div id="search-summary-div" class="block mini-container">
-      <p class="text-center"><span id="search-summary"></span><a id="change-btn" class=
-      "btn btn-info btn-small change-btn pull-right">Cambiar</a></p>
-    </div>
-     <div id="search-div" class="block mini-container edit-search-box">
-      <form id="search-form">
-            <div>
-                <a id="hide-btn" class="btn btn-info btn-small pull-right">Ocultar</a>
-            </div>
-        <div class="row-fluid spaced span2 offset5" id="main-buttons2-div">
-            <ul class="nav nav-pills text" id="main-buttons2">
-                <li class="active" id="round-trip-button"><a href="#">Ida y Vuelta</a></li>
-                <li id="one-way-button"><a href="#">Ida</a></li>
-            </ul>
+    <div class="container">
+        <ul class="breadcrumb">
+            <li>
+                <a href="{{ index }}">
+                    <i class="icon-plane"></i> Inicio
+                </a>
+                <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <i class="icon-search"></i> Búsqueda
+            </li>
+        </ul>
+
+        <div id="search-summary-div" class="block mini-container">
+            <p class="text-center">
+                <span id="search-summary"></span>
+                <a
+                    id="change-btn"
+                    class="btn btn-info btn-small change-btn pull-right"
+                    >Cambiar</a>
+            </p>
         </div>
-            <div class="row-fluid offset1">
-                <div class="span6">
-                    <div class="row-fluid">
-                        <div class="span6">
-                            <span> Desde:</span>
-                            <input type="text" class="roundtrip oneway city validate-city autocomplete span12" id="desde" placeholder="Ciudad/Aeropuerto de origen"/>
+
+        <div id="search-div" class="block mini-container edit-search-box">
+            <form id="search-form" class="submit" action="{{ results }}">
+                <div>
+                    <a id="hide-btn" class="btn btn-info btn-small pull-right">Ocultar</a>
+                </div>
+                <div class="row-fluid spaced span2 offset5" id="main-buttons2-div">
+                    <ul class="nav nav-pills text" id="main-buttons2">
+                        <li class="active" id="round-trip-button"><a href="#">Ida y Vuelta</a></li>
+                        <li id="one-way-button"><a href="#">Ida</a></li>
+                    </ul>
+                </div>
+                <div class="row-fluid offset1">
+                    <div class="span6">
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <span> Desde:</span>
+                                <input
+                                    type="text"
+                                    class="roundtrip oneway city validate-city autocomplete span12" 
+                                    id="desde"
+                                    placeholder="Ciudad/Aeropuerto de origen"/>
+                            </div>
+                            <div class="span6">
+                                <span> Hasta:</span>
+                                <input
+                                    type="text"
+                                    class="roundtrip oneway city validate-city autocomplete span12" 
+                                    id="hasta"
+                                    placeholder="Ciudad/Aeropuerto de destino"/>
+                            </div>
                         </div>
-                        <div class="span6">
-                            <span> Hasta:</span>
-                            <input type="text" class="roundtrip oneway city validate-city autocomplete span12" id="hasta" placeholder="Ciudad/Aeropuerto de destino"/>
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <span>Fecha de Ida:</span>
+                                <input
+                                    id="ida-datepicker"
+                                    type="text"
+                                    class="roundtrip oneway date validate-date span12 datepicker"/>
+                            </div>
+                            <div id="return-div" class="span6">
+                                <span> Fecha de Vuelta:</span>
+                                <input
+                                    id="vuelta-datepicker"
+                                    type="text"
+                                    class="roundtrip date validate-date span12 datepicker"/>
+                            </div>
+                        </div>
+                        <p id="invalid-error" class="error-message text-center">Por favor, verifique los campos señalados</p>
+                    </div>
+
+                    <div class="span4">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="row-fluid">
+                                    <label for="clase"> Clase:</label>
+                                    <select id="clase" name="selCombo" class="roundtrip oneway">
+                                        <option value="any">Cualquiera</option>
+                                        <option value="ECONOMY">Turista</option>
+                                        <option value="BUSINESS">Ejecutiva</option>
+                                        <option value="FIRST_CLASS">Primera Clase</option>
+                                    </select>
+                                </div>
+                                <div class="table-row" id="labels-people">
+                                    <div class="table-cell">
+                                        <label
+                                            for="adults"
+                                            class="bootstrap-tooltip"
+                                            title="Mayores de 12 años"
+                                            >Adultos <i id="adults-info" class="icon-info-sign"></i></label>
+                                    </div>
+                                    <div class="table-cell">
+                                        <label
+                                            for="children"
+                                            class="bootstrap-tooltip"
+                                            title="De 2 a 11 años"
+                                            >Niños <i id="children-info" class="icon-info-sign"></i></label>
+                                    </div>
+                                    <div class="table-cell">
+                                        <label
+                                            for="infants"
+                                            class="bootstrap-tooltip"
+                                            title="Hasta 2 años"
+                                            >Infantes <i id="infants-info" class="icon-info-sign"></i></label>
+                                    </div>
+                                </div>
+                                <div class="table-row">
+                                    <div class="table-cell">
+                                      <select id="adults" class="span10 oneway roundtrip required">
+                                            {% for num in range(1,9) %}
+                                                <option value="{{ num }}">{{ num }}</option>
+                                            {% endfor %}
+                                      </select>
+                                    </div>
+                                    <div class="table-cell">
+                                        <select id="children" class="span10 oneway roundtrip required">
+                                            {% for num in range(0,9) %}
+                                                <option value="{{ num }}">{{ num }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="table-cell">
+                                        <select id="infants" class="span10 oneway roundtrip required">
+                                            {% for num in range(0,9) %}
+                                                <option value="{{ num }}">{{ num }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row-fluid">
-                        <div class="span6">
-                            <span>Fecha de Ida:</span>
-                            <input id="ida-datepicker" type="text" class="roundtrip oneway date validate-date span12 datepicker"/>
-                        </div>
-                        <div id="return-div" class="span6">
-                            <span> Fecha de Vuelta:</span>
-                            <input id="vuelta-datepicker" type="text" class="roundtrip date validate-date span12 datepicker"/>
-                        </div>
-                    </div>
-                    <p id="invalid-error" class="error-message text-center">Por favor, verifique los campos señalados</p>
                 </div>
-                <div class="span4">
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="row-fluid">
-                              <label for="clase"> Clase:</label>
-                              <select id="clase" name="selCombo" class="roundtrip oneway">
-                                  <option value="any">Cualquiera</option>
-                                  <option value="ECONOMY">Turista</option>
-                                  <option value="BUSINESS">Ejecutiva</option>
-                                  <option value="FIRST_CLASS">Primera Clase</option>
-                              </select>
-                            </div>
-                            <div class="table-row" id="labels-people">
-                                <div class="table-cell"><label for="adults" class="bootstrap-tooltip" title="Mayores de 12 años">Adultos <i id="adults-info" class="icon-info-sign"></i></label></div>
-                                <div class="table-cell"><label for="children" class="bootstrap-tooltip" title="De 2 a 11 años">Niños <i id="children-info" class="icon-info-sign"></i></label></div>
-                                <div class="table-cell"><label for="infants" class="bootstrap-tooltip" title="Hasta 2 años">Infantes <i id="infants-info" class="icon-info-sign"></i></label></div>
-                            </div>
-                             <div class="table-row">
-                            <div class="table-cell">
-                              <select id="adults" class="span10 oneway roundtrip required">
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                  <option value="4">4</option>
-                                  <option value="5">5</option>
-                                  <option value="6">6</option>
-                                  <option value="7">7</option>
-                                  <option value="8">8</option>
-                              </select>
-                            </div>
-                            <div class="table-cell">
-                              <select id="children" class="span10 oneway roundtrip required">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                            </select>
-                          </div>
-                          <div class="table-cell">
-                               <select id="infants" class="span10 oneway roundtrip required">
-                                  <option value="0">0</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                  <option value="4">4</option>
-                                  <option value="5">5</option>
-                                  <option value="6">6</option>
-                                  <option value="7">7</option>
-                              </select>
-                          </div>
-                        </div>
+
+                <div class="row-fluid">
+                    <div class="span1 offset11">
+                            <input
+                                type="submit"
+                                value="Buscar"
+                                id="search-submit"
+                                class="btn btn-primary pull-right wait-geodata"/>
                     </div>
                 </div>
-              </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span1 offset11">
-                        <input type="submit" value="Buscar" id="search-submit" class="btn btn-primary pull-right wait-geodata"/>
-                </div>
-            </div>
             </form>
         </div>
 
-    <div id="messages-view" class="row-fluid">
+        <div id="messages-view" class="row-fluid">
+        </div>
+
+        <div id="main" class="row-fluid hidden">
+            <div class="span3">
+                <div data-offset-top="220" id="filters-panel" data-spy="affix" class="lat-panel block">
+                    <div class="row-fluid">
+                        <h4>Filtros</h4>
+                    </div>
+                    <div class="row-fluid">
+                        <div id="filterprice" class="filter">
+                            <label><strong>Precio: <span id="price-range" class="text-info">price</span></strong></label>
+                            <div id="slider-range" class="filter-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div id="filterairline" class="filter">
+                            <label><strong>Aerolínea:</strong></label>
+                            <select id="airline-filter">
+                                <option id="airline-filter-default" value="">Selecciona una aerolínea</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div id="filterscales" class="filter">
+                            <label><strong>Escalas:</strong></label>
+                            <input id="spinner" class="filter-input" name="escalas">
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <div id="schedule-select" class="filter">
+                            <label><strong>Horario:</strong></label>
+                            <select id="time-filter">
+                                <option id="default" selected="selected">
+                                    Selecciona un horario
+                                </option>
+                                <option value="5-11">Mañana (5:00 - 11:00)</option>
+                                <option value="11-15">Mediodía (11:00 - 15:00)</option>
+                                <option value="15-19">Tarde (15:00 - 19:00)</option>
+                                <option value="19-5">Noche (19:00 - 5:00)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <button id="filter-button" class="btn btn-info">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="blockresults" class="block lat-panel span9">
+                <div id="results-messages" class="text-center">
+                </div>
+                <div id="search-results-space">
+                    <div class="row-fluid">
+                        <h3 class="text-center"><i class="icon-search"></i> Resultados de Búsqueda</h3>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="order">
+                            <div id="sort-buttons" class="btn-group" data-toggle="buttons-radio">
+                                <button id="total" class="btn btn-small active">
+                                    <i id="total-ico" class="icon-arrow-down"></i> Precio
+                                </button>
+                                <button id="airline" class="btn btn-small">
+                                    <i id="airline-ico" class=""></i> Aerolínea
+                                </button>
+                                <button id="stopovers" class="btn btn-small">
+                                    <i id="stopovers-ico" class=""></i> Escalas
+                                </button>
+                                <button id="duration" class="btn btn-small">
+                                    <i id="duration-ico" class=""></i> Duración
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="results-titles" class="row-fluid hidden">
+                        <div id="ida" class="span4">
+                            <div class="row-fluid">
+                                <h3 class="text-center">Ida</h3>
+                            </div>
+                        </div>
+                        <div id="regreso" class="span4">
+                            <div class="row-fluid">
+                                <h3 class="text-center">Regreso</h3>
+                            </div>
+                        </div>
+                        <div id="precio" class="span4">
+                            <div class="row-fluid">
+                                <h3 class="text-center">Precio</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="results" class="row-fluid">
+                        <div id="search-results" class="span12">
+                        </div>
+                    </div>
+                    <div id="confirmationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    </div>
+                    <div class="row-fluid">
+                        <div class="text-center pagination pagination-large">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="main" class="row-fluid hidden">
-        <div class="span3">
-            <div  data-offset-top="220" id="filters-panel" data-spy="affix" class="lat-panel block">
-                <div class="row-fluid">
-                    <h4>Filtros</h4>
-                </div>
-                <div class="row-fluid">
-                    <div id="filterprice" class="filter">
-                        <label><strong>Precio: <span id="price-range" class="text-info">price</span></strong></label>
-                        <div id="slider-range" class="filter-input">
-                        </div>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div id="filterairline" class="filter">
-                        <label><strong>Aerolínea:</strong></label>
-                        <select id="airline-filter">
-                            <option id="airline-filter-default" value="">Selecciona una aerolínea</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div id="filterscales" class="filter">
-                        <label><strong>Escalas:</strong></label>
-                        <input id="spinner" class="filter-input" name="escalas">
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div id="schedule-select" class="filter">
-                        <label><strong>Horario:</strong></label>
-                        <select id="time-filter">
-                            <option id="default" selected="selected">
-                                Selecciona un horario
-                            </option>
-                            <option value="5-11">Mañana (5:00 - 11:00)</option>
-                            <option value="11-15">Mediodía (11:00 - 15:00)</option>
-                            <option value="15-19">Tarde (15:00 - 19:00)</option>
-                            <option value="19-5">Noche (19:00 - 5:00)</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <button id="filter-button" class="btn btn-info">Filtrar</button>
-                </div>
-            </div>
-        </div>
 
-        <div id="blockresults" class="block lat-panel span9">
-            <div id="results-messages" class="text-center">
-            </div>
-            <div id="search-results-space">
-                <div class="row-fluid">
-                    <h3 class="text-center"><i class="icon-search"></i> Resultados de Búsqueda</h3>
-                </div>
-                <div class="row-fluid">
-                    <div class="order">
-                        <div id="sort-buttons" class="btn-group" data-toggle="buttons-radio">
-                            <button id="total" class="btn btn-small active">
-                                <i id="total-ico" class="icon-arrow-down"></i> Precio
-                            </button>
-                            <button id="airline" class="btn btn-small">
-                                <i id="airline-ico" class=""></i> Aerolínea
-                            </button>
-                            <button id="stopovers" class="btn btn-small">
-                                <i id="stopovers-ico" class=""></i> Escalas
-                            </button>
-                            <button id="duration" class="btn btn-small">
-                                <i id="duration-ico" class=""></i> Duración
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="results-titles" class="row-fluid hidden">
-                    <div id="ida" class="span4">
-                        <div class="row-fluid">
-                            <h3 class="text-center">Ida</h3>
-                        </div>
-                    </div>
-                    <div id="regreso" class="span4">
-                        <div class="row-fluid">
-                            <h3 class="text-center">Regreso</h3>
-                        </div>
-                    </div>
-                    <div id="precio" class="span4">
-                        <div class="row-fluid">
-                            <h3 class="text-center">Precio</h3>
-                        </div>
-                    </div>
-                </div>
-                <div id="results" class="row-fluid">
-                    <div id="search-results" class="span12">
-                    </div>
-                </div>
-                <div id="confirmationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                </div>
-                <div class="row-fluid">
-                    <div class="text-center pagination pagination-large">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    {% include "resultados/confirm-modal-flights.html" %}
+    {% include "resultados/confirm-modal-header.html" %}
+    {% include "resultados/confirm-modal-template.html" %}
+    {% include "resultados/flight-details-modal-window-header.html" %}
+    {% include "resultados/flight-details.html" %}
+    {% include "resultados/flight-result-template.html" %}
+    {% include "resultados/flight-view-footer-template.html" %}
+    {% include "resultados/flight-view-price.html" %}
+    {% include "resultados/flight-view-template.html" %}
+    {% include "resultados/outbound-only-template.html" %}
+    {% include "resultados/search-results-messages.html" %}
 
-    <script type="text/template" id="confirm-modal-header">
-        <div class="row-fluid">
-            <div class="span12">
-                <h2 id="myModalLabel">Confirmación de Selección</h2>
-            </div>
-        </div>
-        <hr />
-    </script>
-    <script type="text/template" id="confirm-modal-flights">
-        <div class="row-fluid">
-            <div class="span12">
-                <h4><%= title %></h4>
-            </div>
-        </div>
-        <div class="row-fluid">
-            <div class="span12">
-                <img src="<%= image_logo_url %>" alt="Airline Logo" />
-                <strong>Nombre de la Aerolínea</strong>
-            </div>
-        </div>
-        <div class="row-fluid">
-            <div class="span7">
-                <div class="row-fluid">
-                    <strong>Salida:</strong>
-                    <%= depart_time %>
-                </div>
-                <div class="row-fluid">
-                    <%= depart_airport %>
-                </div>
-                <div class="row-fluid">
-                    <strong>Llegada:</strong>
-                    <%= arrival_time %>
-                </div>
-                <div class="row-fluid">
-                    <%= arrival_airport %>
-                </div>
-            </div>
-            <div class="span5">
-                <div class="span12">
-                    <div class="row-fluid">
-                        <strong>Duración:</strong>
-                        <%= flight_duration %> hs
-                    </div>
-                    <div class="row-fluid">
-                        <strong>Vuelo:</strong>
-                        <%= flight_id %>
-                    </div>
-                    <div class="row-fluid">
-                        <strong>Clase:</strong>
-                        <%= cabin_type %>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr />
-    </script>
-    <script type="text/template" id="confirm-modal-template">
-        <div class="row-fluid">
-            <div class="span6">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <h4>Cantidad de Pasajeros </h4>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span4">
-                        <div class="row-fluid"><strong>Adultos:</strong></div>
-                        <div class="row-fluid"><strong>Niños:</strong></div>
-                        <div class="row-fluid"><strong>Infantes:</strong></div>
-                        <div class="row-fluid"><strong>Total:</strong></div>
-                    </div>
-                    <div class="span3">
-                        <div class="row-fluid"><%= num_adults %></div>
-                        <div class="row-fluid"><%= num_kids %></div>
-                        <div class="row-fluid"><%= num_infants %></div>
-                        <div class="row-fluid"><%= passengers_total %></div>
-                    </div>
-                </div>
-            </div>
-            <div class="span6">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <h4>Importe a Pagar</h4>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="offset1 span5">
-                        <div class="row-fluid"><strong>Cargos:</strong></div>
-                        <div class="row-fluid"><strong>Impuestos:</strong></div>
-                        <div class="row-fluid"><strong>Tarifa:</strong></div>
-                        <div class="row-fluid"><strong>Total:</strong></div>
-                    </div>
-                    <div class="span5">
-                        <div class="row-fluid"> U$S <%= charges %></div>
-                        <div class="row-fluid"> U$S <%= taxes %></div>
-                        <div class="row-fluid"> U$S <%= fare %></div>
-                        <div class="row-fluid"> U$S <strong><%= total %></strong></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-footer">
-            <button class="btn confirm-modal-cancel" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <a href="ingresoinfo.html" class="btn btn-success confirm-modal-confirm">Confirmar</a>
-        </div>
-    </script>
-    <script type="text/template" id="flight-view-template">
-        <div class="span4 <%= extra_class %>">
-            <div class="row-fluid">
-                <div class="span12">
-                    <strong>Aerolínea:</strong>
-                    <img src="<%= airline_logo_link %>">
-                    <%= airline_name %>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span12">
-                    <p><strong>Salida:</strong> <%= datetime_departure %> </p>
-                    <p><strong>Llegada:</strong> <%= datetime_arrival %> </p>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span12">
-                    <strong>Escalas:</strong>
-                    <%= stopovers %>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span12">
-                    <strong>Duración:</strong>
-                    <%= duration %> hs
-                </div>
-            </div>
-        </div>
-    </script>
-    <script type="text/template" id="flight-view-price">
-        <div class="span4 priceSpan">
-            <div class="row-fluid">
-                <div class="text-center span12 price">
-                    <span id="currency-letters">U$S</span>
-                    <%= ticket_price %>
-                </div>
-            </div>
-        </div>
-    </script>
-    <script type="text/template" id="outbound-only-template">
-        <div class="offset1 span5 <%= extra_class %>">
-            <div class="row-fluid">
-                <div class="span12">
-                    <strong>Aerolínea:</strong>
-                    <img src="<%= airline_logo_link %>">
-                    <%= airline_name %>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span12">
-                    <p><strong>Salida:</strong> <%= datetime_departure %> </p>
-                    <p><strong>Llegada:</strong> <%= datetime_arrival %> </p>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span12">
-                    <strong>Escalas:</strong>
-                    <%= stopovers %>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span12">
-                    <strong>Duración:</strong>
-                    <%= duration %> hs
-                </div>
-            </div>
-        </div>
-    </script>
-    <script type="text/template" id="flight-view-footer-template">
-        <div class="row-fluid">
-            <div class="details-link  span4">
-                <strong class="pull-right"><a id="details-link" href="#<%= flight_id %>" role="button" data-toggle="modal">Detalles</a></strong>
-            </div>
-            <div class="selection-button offset3 span5">
-                <a data-dismiss="modal" class="btn btn-info select-button">Seleccionar</a>
-            </div>
-        </div>
-    </script>
-    <script type="text/template" id="flight-details-modal-window-header">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3>Detalles</h3>
-        </div>
-    </script>
-    <script type="text/template" id="flight-result-template">
-        <div class="span6">
-            <div class="row-fluid">
-            </div>
-        </div>
-
-        <div id="<%= flight_id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-footer">
-                <button class="btn pull-left" data-dismiss="modal" aria-hidden="true">Cerrar</button>
-                <button data-dismiss="modal" class="btn btn-info pull-right select-button">Seleccionar</button>
-            </div>
-        </div>
-    </script>
-    <script type="text/template" id="flight-details">
-            <div id="<%= flight_id %>modal-body" class="modal-body">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <h4><%= title %></h4>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span5">
-                         <img src="<%= airline_logo_link %>" alt="" />
-                        <strong><%= airline_name %></strong>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <strong>Salida:</strong>
-                        <span><%= departure_time %></span>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <strong>Desde:</strong>
-                        <span><%= depart_airport_name %></span>
-                        <span>(<%= depart_airport_code %>)</span>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <strong>Llegada:</strong>
-                        <span><%= arrival_time %></span>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <strong>Hasta:</strong>
-                        <span><%= arrival_airport_name %></span>
-                        <span>(<%= arrival_airport_code %>)</span>
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span4">
-                        <strong>Duracion:</strong>
-                        <span><%= flight_duration %></span> hs
-                    </div>
-                    <div class="span4">
-                        <span class="offset3">
-                            <strong>Vuelo:</strong>
-                            <span><%= flight_id %></span>
-                        </span>
-                    </div>
-                    <div class="span4">
-                        <span class="pull-right">
-                            <strong>Clase:</strong>
-                            <span><%= cabin_type %></span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-    </script>
-    <script type="text/template" id="search-results-messages">
-        <div class="span12 block">
-            <div class="text-center">
-                <img src="<%= message_image_url %>" width="64px" height="64px"/>
-                <h3><%= message_title %></h3>
-                <p><%= message_explanation %></p>
-            </div>
-        </div>
-    </script>
     <script src="js/jquery.js"></script>
     <script src="js/autocomplete.js"></script>
     <script src="js/jquery-ui.js"></script>

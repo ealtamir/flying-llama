@@ -1,0 +1,48 @@
+<script type="text/template" id="confirm-modal-flights">
+    <div class="row-fluid">
+        <div class="span12">
+            <h4><%= title %></h4>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <img src="<%= image_logo_url %>" alt="Airline Logo" />
+            <strong>Nombre de la Aerolínea</strong>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span7">
+            <div class="row-fluid">
+                <strong>Salida:</strong>
+                <%= depart_time %>
+            </div>
+            <div class="row-fluid">
+                <%= depart_airport %>
+            </div>
+            <div class="row-fluid">
+                <strong>Llegada:</strong>
+                <%= arrival_time %>
+            </div>
+            <div class="row-fluid">
+                <%= arrival_airport %>
+            </div>
+        </div>
+        <div class="span5">
+            <div class="span12">
+                <div class="row-fluid">
+                    <strong>Duración:</strong>
+                    <%= flight_duration %> hs
+                </div>
+                <div class="row-fluid">
+                    <strong>Vuelo:</strong>
+                    <%= flight_id %>
+                </div>
+                <div class="row-fluid">
+                    <strong>Clase:</strong>
+                    <%= cabin_type %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+</script>

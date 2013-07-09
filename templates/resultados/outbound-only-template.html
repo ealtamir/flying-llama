@@ -1,0 +1,29 @@
+<script type="text/template" id="outbound-only-template">
+    <div class="offset1 span5 <%= extra_class %>">
+        <div class="row-fluid">
+            <div class="span12">
+                <strong>Aerolínea:</strong>
+                <img src="<%= airline_logo_link %>">
+                <%= airline_name %>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <p><strong>Salida:</strong> <%= datetime_departure %> </p>
+                <p><strong>Llegada:</strong> <%= datetime_arrival %> </p>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <strong>Escalas:</strong>
+                <%= stopovers %>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <strong>Duración:</strong>
+                <%= duration %> hs
+            </div>
+        </div>
+    </div>
+</script>

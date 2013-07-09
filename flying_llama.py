@@ -1,6 +1,6 @@
 import web
 
-from helpers import build_context
+from helpers import build_context, get_template
 
 import jinja2
 import os
@@ -31,40 +31,43 @@ app = web.application(mappings, globals())
 
 class index:
     def GET(self):
-        try:
-            template = JINJA_ENVIRONMENT.get_template(
-                fs_paths[self.__class__.__name__]
-            )
-            template = template.render(context)
-        except jinja2.TemplateNotFound as e:
-            template = "can't find template: " + str(e)
-        except Exception as e:
-            template = "Exception raised: " + str(e)
-        return template
+        return get_template(
+            JINJA_ENVIRONMENT, context, fs_paths[self.__class__.__name__]
+        )
 
 
 class results:
     def GET(self):
-        return 'results'
+        return get_template(
+            JINJA_ENVIRONMENT, context, fs_paths[self.__class__.__name__]
+        )
 
 
 class summary:
     def GET(self):
-        return 'summary'
+        return get_template(
+            JINJA_ENVIRONMENT, context, fs_paths[self.__class__.__name__]
+        )
 
 
 class confirmation:
     def GET(self):
-        return 'confirmation'
+        return get_template(
+            JINJA_ENVIRONMENT, context, fs_paths[self.__class__.__name__]
+        )
 
 
 class info_input:
     def GET(self):
-        return 'info_input'
+        return get_template(
+            JINJA_ENVIRONMENT, context, fs_paths[self.__class__.__name__]
+        )
 
 
 class payment:
     def GET(self):
-        return 'payment'
+        return get_template(
+            JINJA_ENVIRONMENT, context, fs_paths[self.__class__.__name__]
+        )
 
 app = app.wsgifunc()

@@ -1,3 +1,5 @@
+import jinja2
+
 def build_context(urls):
     mappings = {}
     url = ()
@@ -14,6 +16,16 @@ def build_context(urls):
         fs_paths.update({r[class_name]: r[fs_path]})
 
     return url, mappings, fs_paths,
+
+def get_template(env, context, name):
+        try:
+            template = env.get_template(name)
+            template = template.render(context)
+        except jinja2.TemplateNotFound as e:
+            template = "can't find template: " + str(e)
+        except Exception as e:
+            template = "Exception raised: " + str(e)
+        return template
 
 if __name__ == "__main__":
     urls = (

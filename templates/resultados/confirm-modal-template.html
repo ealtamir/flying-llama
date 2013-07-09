@@ -1,0 +1,51 @@
+<script type="text/template" id="confirm-modal-template">
+    <div class="row-fluid">
+        <div class="span6">
+            <div class="row-fluid">
+                <div class="span12">
+                    <h4>Cantidad de Pasajeros </h4>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span4">
+                    <div class="row-fluid"><strong>Adultos:</strong></div>
+                    <div class="row-fluid"><strong>Niños:</strong></div>
+                    <div class="row-fluid"><strong>Infantes:</strong></div>
+                    <div class="row-fluid"><strong>Total:</strong></div>
+                </div>
+                <div class="span3">
+                    <div class="row-fluid"><%= num_adults %></div>
+                    <div class="row-fluid"><%= num_kids %></div>
+                    <div class="row-fluid"><%= num_infants %></div>
+                    <div class="row-fluid"><%= passengers_total %></div>
+                </div>
+            </div>
+        </div>
+        <div class="span6">
+            <div class="row-fluid">
+                <div class="span12">
+                    <h4>Importe a Pagar</h4>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="offset1 span5">
+                    <div class="row-fluid"><strong>Cargos:</strong></div>
+                    <div class="row-fluid"><strong>Impuestos:</strong></div>
+                    <div class="row-fluid"><strong>Tarifa:</strong></div>
+                    <div class="row-fluid"><strong>Total:</strong></div>
+                </div>
+                <div class="span5">
+                    <div class="row-fluid"> U$S <%= charges %></div>
+                    <div class="row-fluid"> U$S <%= taxes %></div>
+                    <div class="row-fluid"> U$S <%= fare %></div>
+                    <div class="row-fluid"> U$S <strong><%= total %></strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn confirm-modal-cancel" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+        <a href="ingresoinfo.html" class="btn btn-success confirm-modal-confirm">Confirmar</a>
+    </div>
+</script>
