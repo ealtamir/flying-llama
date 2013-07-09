@@ -12,6 +12,12 @@ body {
     background-image: url("../img/sky_bg.png");
 }
 
+body > footer {
+    height: 200px;
+    background-image: url("../img/seamless_mountains.png");
+    margin-top: 20px;
+}
+
 .llama-logo-image {
     display: inline-block;
     background-image: url("../img/flying-llama.png");
@@ -248,7 +254,7 @@ hr {
 }
 
 .icon-search, .icon-shopping-card{
-    vertical-align: baseline;    
+    vertical-align: baseline;
 }
 
 .btn-group > .btn{
