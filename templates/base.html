@@ -22,29 +22,32 @@
 
 <body>
 
-    <div class="page-header">
-        {% block page_header %}
-        <div class="container">
-            <a href="{{ index }}">
-                <div class="llama-logo-area">
-                    <div class="llama-logo-image"></div>
-                    <div class="llama-logo-text">
-                        <h1>FlyingLlama</h1>
-                        <h2>Venta de Pasajes Online</h2>
+    <div id="wrapper">
+        <div class="page-header">
+            {% block page_header %}
+            <div class="container">
+                <a href="{{ index }}">
+                    <div class="llama-logo-area">
+                        <div class="llama-logo-image"></div>
+                        <div class="llama-logo-text">
+                            <h1>FlyingLlama</h1>
+                            <h2>Venta de Pasajes Online</h2>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
+            {% endblock page_header %}
         </div>
-        {% endblock page_header %}
+
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+        </div>
+
+        <footer>
+        </footer>
     </div>
 
-    <div class="container">
-        {% block content %}
-        {% endblock content %}
-    </div>
-
-    <footer>
-    </footer>
     {% block common_scripts %}
         <script src="js/jquery.js"></script>
         <script src="js/autocomplete.js"></script>

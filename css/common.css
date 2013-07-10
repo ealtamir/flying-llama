@@ -12,11 +12,30 @@ body {
     background-image: url("../img/sky_bg.png");
 }
 
-body > footer {
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+#wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+
+#wrapper > div.container {
+    padding-bottom: 200px;
+}
+
+#wrapper > footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
     height: 200px;
     background-image: url("../img/seamless_mountains.png");
-    margin-top: 20px;
 }
+
 
 .llama-logo-image {
     display: inline-block;
