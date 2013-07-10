@@ -1,4 +1,3 @@
-
 $(function() {
     var searchParams = new SearchParams({}, {cookie: "search_params"});
     var searchView = new SearchView({searchParams: searchParams});
@@ -142,16 +141,18 @@ $(function() {
     $('#filters-panel').bind('affixed', function() {
         console.log('element got affixed');
     });
+
     $('#filters-panel').bind('unaffixed', function() {
         console.log('element got unaffixed');
     });
+
     $("#change-btn").click(function(){
         $("#search-div").fadeIn("fast");
         $("#change-btn").removeClass("visible");
         $("#change-btn").addClass("non-visible");
     });
 
-    $("#hide-btn,#search-submit").click(function(){
+    $("#hide-btn, #search-submit").click( function(){
         $("#search-div").fadeOut("fast");
         $("#change-btn").addClass("visible");
         $("#change-btn").removeClass("non-visible");

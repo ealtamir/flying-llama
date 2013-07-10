@@ -1,5 +1,6 @@
 import jinja2
 
+
 def build_context(urls):
     mappings = {}
     url = ()
@@ -16,6 +17,7 @@ def build_context(urls):
         fs_paths.update({r[class_name]: r[fs_path]})
 
     return url, mappings, fs_paths,
+
 
 def get_template(env, context, name):
         try:

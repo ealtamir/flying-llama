@@ -147,6 +147,7 @@ SearchParams = Persistent.extend({
 
         var data = this.toJSON();
 
+
         // alert(this.getType());
 
         switch (this.getType()) {
@@ -195,7 +196,7 @@ SearchParams = Persistent.extend({
 
     getClassName: function() {
         if (this.get("cabin_type") === undefined) {
-            return this.classNames["any"];
+            return this.classNames.any;
         } else {
             return this.classNames[this.get("cabin_type")];
         }
@@ -217,7 +218,7 @@ SearchParams = Persistent.extend({
     },
     initialize: function(attributes, options) {
         Persistent.prototype.initialize.apply(this, [attributes, options]);
-        this.clearFilters();4
+        this.clearFilters();
     }
 
 
@@ -246,7 +247,7 @@ SearchResults = Backbone.Model.extend({
         // });
 
         this.on("change:state", function() {
-            this.trigger("state:"+this.get("state"));
+            this.trigger("state:" + this.get("state"));
         });
 
         this.listenTo(this.get("searchParams"), "change", this.update);
@@ -256,6 +257,7 @@ SearchResults = Backbone.Model.extend({
     update: function() {
 
         if (this.get("searchParams").isValid()) {
+
 
             if (this.xhr !== undefined)
                 this.xhr.abort();
@@ -285,15 +287,12 @@ SearchResults = Backbone.Model.extend({
                 results.set({state: "failed"});
             });
         }
-
     },
 
     cancel: function () {
         this.xhr.abort();
         this.set({state: "done"});
     },
-
-
 
     getType: function () {
         return this.get("searchParams").getType();
@@ -426,12 +425,14 @@ TripData = Persistent.extend({
         inboundRoutes: undefined
 
     },
+
     getType: function () {
         if (this.get("inboundRoutes") === undefined)
             return "oneway";
         else
             return "roundtrip";
     },
+
     getIds: function () {
         var ids = [];
         ids.push(this.get("outboundRoutes")[0].segments[0].flightId);

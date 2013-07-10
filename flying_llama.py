@@ -13,7 +13,7 @@ urls = (
     ('confirmation', '/confirmation', 'confirmation', 'confirmacion.html'),
     ('info_input', '/info_input', 'info_input', 'ingresoinfo.html'),
     ('payment', '/payment', 'payment', 'ingresoinfopago.html'),
-    ('index', '/.*', 'index', 'index/index.html'),
+    ('default', '/.*', 'default', 'index/index.html'),
 )
 
 
@@ -27,6 +27,11 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 )
 
 app = web.application(mappings, globals())
+
+
+class default:
+    def GET(self):
+        return web.redirect('/index')
 
 
 class index:
