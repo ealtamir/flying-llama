@@ -1,17 +1,18 @@
 .main-panel form label{
-	font-size:1em;
+    font-size:1em;
 }
 .well label{
-	font-size:1em;
+    font-size:1em;
 }
 
 .ast{
-	color: #005580;
+    color: #005580;
 }
 
 p span{
-	font-size: 0.8em;
-} 
+    font-size: 0.8em;
+}
+
 #back{
-	font-size: 0.8em;
+    font-size: 0.8em;
 }

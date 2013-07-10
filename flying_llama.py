@@ -8,7 +8,7 @@ import os
 # Template name, uri path, class name, filesystem path
 urls = (
     ('index', '/index', 'index', 'index/index.html'),
-    ('results', '/results', 'results', 'resultados.html'),
+    ('results', '/results', 'results', 'resultados/resultados.html'),
     ('summary', '/summary', 'summary', 'resumen.html'),
     ('confirmation', '/confirmation', 'confirmation', 'confirmacion.html'),
     ('info_input', '/info_input', 'info_input', 'ingresoinfo.html'),

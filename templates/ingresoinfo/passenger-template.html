@@ -1,0 +1,50 @@
+<script type="text/template" id="passenger-template">
+    <div id="passenger<%= passengerId %>">
+        <h4 id="passengertitle"><i class="icon-user"></i> <%= friendlyName %></h4>
+        <div class="well">
+            <div class="row-fluid">
+                <div class="span6">
+                    <label for="<%= passengerId %>-firstname"><span class="ast">(*)</span> Nombre:</label>
+                    <input id="<%= passengerId %>-firstname" class="validate-not-empty empty letters-input span12" type="text" placeholder="Como aparece en el DNI" />
+                </div>
+                <div class="span6">
+                    <label for="<%= passengerId %>-lastname"><span class="ast">(*)</span> Apellido:</label>
+                    <input id="<%= passengerId %>-lastname" class="validate-not-empty empty letters-input span12" type="text" placeholder="Como aparece en el DNI"/>
+                </div>
+            </div>
+            <br/>
+            <div class="row-fluid">
+                <div id="<%= passengerId %>-birth-date" class="validate-birth-date birth-date error span6">
+                    <label for="<%= passengerId %>-bornday"><span class="ast">(*)</span> Fecha de Nacimiento:</label>
+                    <input id="<%= passengerId %>-bornday" class="birth-date day numeric-input span2" maxlength="2" type="text" placeholder="dd" />
+                    <span>/</span>
+                    <input id="<%= passengerId %>-bornmonth" class="birth-date month numeric-input span2" maxlength="2" type="text" placeholder="mm" />
+                    <span>/</span>
+                    <input id="<%= passengerId %>-bornyear" class="birth-date year numeric-input span4" maxlength="4" type="text" placeholder="yyyy" />
+                </div>
+                <div class="span6">
+                    <label for="<%= passengerId %>-gender"><span class="ast">(*)</span> Género:</label>
+                    <select id="<%= passengerId %>-gender" name="selCombo" class="span12"/
+                            <option class="no-display" selected="selected"></option>
+                            <option>Hombre</option>
+                            <option>Mujer</option>
+                    </select>
+                </div>
+            </div>
+            <br />
+            <div class="row-fluid">
+                <div class="span6">
+                    <label for="<%= passengerId %>-idtype"><span class="ast">(*)</span> Documento:</label>
+                    <select id="<%= passengerId %>-idtype" name="selCombo" class="span3"/
+                            <option class="no-display" selected="selected"></option>
+                            <option value="1">DNI</option>
+                            <option value="2">LE</option>
+                            <option value="3">LC</option>
+                    </select>
+                    <input id="<%= passengerId %>-idnumber" class="validate-not-empty empty dni numeric-input span6"  type="text" placeholder="Número de documento" />
+                </div>
+            </div>
+            <p class="validation-error error-message text-center">Por favor, verifique los campos señalados</p>
+        </div>
+    </div>
+</script>
