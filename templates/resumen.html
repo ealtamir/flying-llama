@@ -1,319 +1,46 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <title>Flying Llama!</title>
-    <link rel="stylesheet" href="css/common.css"/>
-    <link rel="stylesheet" href="css/confirmacion.css"/>
-    <meta charset="utf-8"/>
-    <link rel="icon" href="img/favicon.png"/>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+{% extends "base.html" %}
 
-</head>
-<body>
-    <div class="page-header">
-        <div class="container">
-        	<a href="index.html"><div class="llama-logo-area">
-	        	<div class="llama-logo-image"></div>
-	        	<div class="llama-logo-text">
-	        		<h1>FlyingLlama</h1>
-	        		<h2>Venta de Pasajes Online</h2>
-	        	</div>
-	        </div></a>
+{% block content %}
+    <div class="span10 offset1">
+        <ul class="breadcrumb">
+                <li><a href="{{ index }}"><i class="icon-plane"></i> Inicio</a> <span class="divider">/</span></li>
+                <li><a href="{{ results }}"><i class="icon-search"></i> Búsqueda</a> <span class="divider">/</span></li>
+                <li class="active"><i class="icon-group"></i> Pasajeros <span class="divider">/</span></li>
+                <li class="active"><i class="icon-shopping-cart"></i> Pago <span class="divider">/</span></li>
+                <li class="active"><i class="icon-check-empty"></i> Confirmación <span class="divider">/</span></li>
+                <li class="active"><i class="icon-check"></i> Resumen</li>
+        </ul>
+
+        <div class="block main-panel">
+            <h3 id="email" class="text-center"><i class="icon-check"></i> Resumen</h3> <br/>
+            <div id="purchase-ok" class="text-center alert alert-success">¡La reserva se ha realizado con éxito!</div>
+            <div id="confirmation-info"></div>
+            <a id="print" class="btn btn-info btn-large print" data-toggle="button" href="#"> <i class="icon-print icon-white"></i> Imprimir</a>
+            <a class="btn btn-primary btn-large pull-right" data-toggle="button" href="{{ index }}"><i class="icon-plane"></i> Inicio</a>
         </div>
     </div>
-	<div class="mountains"></div>
 
-	<div class="container">
-		<div class="span10 offset1">
-			<ul class="breadcrumb">
-			  	<li><a href="./index.html"><i class="icon-plane"></i> Inicio</a> <span class="divider">/</span></li>
-			  	<li><a href="./resultados.html"><i class="icon-search"></i> Búsqueda</a> <span class="divider">/</span></li>
-			  	<li class="active"><i class="icon-group"></i> Pasajeros <span class="divider">/</span></li>
-			  	<li class="active"><i class="icon-shopping-cart"></i> Pago <span class="divider">/</span></li>
-			  	<li class="active"><i class="icon-check-empty"></i> Confirmación <span class="divider">/</span></li> 
-			  	<li class="active"><i class="icon-check"></i> Resumen</li>
+    {% include "resumen/confirmation-info-template.html" %}
 
-			</ul>
-			
-			<div class="block main-panel">
-				<h3 id="email" class="text-center"><i class="icon-check"></i> Resumen</h3> <br/>
-			    <div id="purchase-ok" class="text-center alert alert-success">¡La reserva se ha realizado con éxito!</div>
-				<div id="confirmation-info"></div>
-				<a id="print" class="btn btn-info btn-large print" data-toggle="button" href="#"> <i class="icon-print icon-white"></i> Imprimir</a>
-				<a class="btn btn-primary btn-large pull-right" data-toggle="button" href="./index.html"><i class="icon-plane"></i> Inicio</a>
-			</div>
-	</div>
-</div>
+{% endblock content %}
 
-	<script type="text/template" id="confirmation-info-template">
-		<% if (outbound !== undefined) { %>
-		<h4 class="text-center"> <i class="icon-plane"></i> Ida</h4>
-		<div class="well" id="conf-ida-div">
-			<div class="row-fluid less-important">
-				<div class="span12 conf-ida-less">
-					<table class="table table-bordered">
-						<tr>
-							<td><strong>Aerolínea</strong></td>
-							<td><%= outbound.airline %></td>
-						</tr>
-						<tr>
-							<td><strong>Número de Vuelo</strong></td>
-							<td><%= outbound.flightId %></td>
-						</tr>
-						<tr>
-							<td><strong>Pasajeros</strong></td>
-							<td><%= passengerCount %></td>
-						</tr>
-						<tr>
-							<td rowspan="2"><strong>Salida</strong></td>
-							<td><%= outbound.departure.date %> (GMT <%= outbound.arrival.timezone%>)</td>
-						</tr>
-						<tr>
-							<td><%= outbound.departure.airportDescription %></td>
-						</tr>
-						<tr>
-							<td rowspan="2"><strong>Llegada</strong></td>
-							<td><%= outbound.arrival.date %> (GMT <%= outbound.arrival.timezone%>)</td>
-						</tr>
-						<tr>
-							<td><%= outbound.arrival.airportDescription %></td>
-						</tr>
-						<tr>
-							<td><strong>Escalas</strong></td>
-							<td><%= (outbound.stopovers === 0? "Sin escalas":outbound.stopovers) %></td>
-						</tr>
-					</table>
-				</div>					
-			</div>
-		</div>
-		<% } %>
-		<% if (inbound !== undefined) { %>
-		<h4 class="text-center"><i class="icon-plane"></i> Vuelta</h4>
-		<div class="well" id="conf-vuelta-div">
-			<div class="row-fluid less-important">
-				<div class="span12 conf-ida-less">
-					<table class="table table-bordered">
-						<tr>
-							<td><strong>Aerolínea</strong></td>
-							<td><%= inbound.airline %></td>
-						</tr>
-						<tr>
-							<td><strong>Número de Vuelo</strong></td>
-							<td><%= inbound.flightId %></td>
-						</tr>
-						<tr>
-							<td><strong>Pasajeros</strong></td>
-							<td><%= passengerCount %></td>
-						</tr>
-						<tr>
-							<td rowspan="2"><strong>Salida</strong></td>
-							<td><%= inbound.arrival.date %> (GMT <%= inbound.departure.timezone%>)</td>
-						</tr>
-						<tr>
-							<td><%= inbound.departure.airportDescription %></td>
-						</tr>
-						<tr>
-							<td rowspan="2"><strong>Llegada</strong></td>
-							<td><%= inbound.arrival.date %> (GMT <%= inbound.arrival.timezone%>)</td>
-						</tr>
-						<tr>
-							<td><%= inbound.arrival.airportDescription %></td>
-						</tr>
-						<tr>
-							<td><strong>Escalas</strong></td>
-							<td><%= (inbound.stopovers === 0? "Sin escalas":inbound.stopovers) %></td>
-						</tr>
-					</table>
-				</div>					
-			</div>
-		</div>
-		<% } %>
-
-		<h4 class="text-center"><i class="icon-group"></i> Pasajeros</h4>
-		<div class="well" id="conf-passengers-div">
-			<div class="row-fluid less-important">
-				<div class="span12 conf-passengers-less">
-					<% _.each(passengers, function (p) { %>
-					<h4><i class="icon-user"></i> <%= p.friendlyName %> </h4>
-					<table class="table table-bordered">
-						<tr>
-							<td><strong>Nombre:</strong></td>
-							<td><%= p.firstname %></td>
-						</tr>
-						<tr>
-							<td><strong>Apellido:</strong></td>
-							<td><%= p.lastname %></td>
-						</tr>
-						<tr>
-							<td><strong>Fecha de Nacimiento:</strong></td>
-							<td><%= $.datepicker.formatDate("dd/mm/yy",p.birthdate) %></td>
-						</tr>
-						<tr>
-							<td><strong>Sexo:</strong></td>
-							<td><%= p.gender %></td>
-						</tr>
-						<tr>
-							<td><strong>DNI:</strong></td>
-							<td><%= p.idNumber %></td>
-						</tr>
-					</table>
-					<% }); %>
-				</div>
-			</div>
-		</div>
-
-	<h4 class="text-center"> <i class="icon-shopping-cart"></i> Pago</h4>
-	<div class="well" id="conf-well">
-		<h4 class="text-center"> <i class="icon-credit-card"></i> Tarjeta de crédito/débito</h4>
-		<div class="well" id="conf-cc-div">
-			<div class="row-fluid less-important">
-
-				<div class="span12 conf-cc-less">
-					<h4>Datos de Tarjeta:</h4>
-					<table class="table table-bordered">
-						<tr>
-							<td><strong>Nombre:</strong></td>
-							<td><%= payment.creditCard.firstName %></td>
-						</tr>
-						<tr>
-							<td><strong>Apellido:</strong></td>
-							<td><%= payment.creditCard.lastName %></td>
-						</tr>
-						<tr>
-							<td><strong>Tipo:</strong></td>
-							<td><%= payment.creditCard.type %></td>
-						</tr>
-						<tr>
-							<td><strong>Marca:</strong></td>
-							<td><%= payment.creditCard.bank %></td>
-						</tr>
-						<tr>
-							<td><strong>Número:</strong></td>
-							<td><%= payment.creditCard.number %></td>
-						</tr>
-						<tr>
-							<td><strong>Fecha de Vencimiento:</strong></td>
-							<td><%= $.datepicker.formatDate("mm/yy",payment.creditCard.expiration) %></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		
-			<div class="row-fluid less-important">
-				<div class="span12 conf-cc-less">
-				<h4> Datos de Facturación</h4>
-					<table class="table table-bordered">
-						<tr>
-							<td><strong>Ciudad:</strong></td>
-							<td><%= payment.billingAddress.cityFull %></td>
-						</tr>
-						<tr>
-							<td><strong>Código Postal:</strong></td>
-							<td><%= payment.billingAddress.postalCode %></td>
-						</tr>
-						<tr>
-							<td><strong>Dirección:</strong></td>
-							<td><%= payment.billingAddress.street %></td>
-						</tr>
-						<% if (payment.billingAddress.floor !== "") { %>
-						<tr>
-							<td><strong>Piso:</strong></td>
-							<td><%= payment.billingAddress.floor %></td>
-						</tr>
-						<% } %>
-						<% if (payment.billingAddress.apartment !== "") { %>
-						<tr>
-							<td><strong>Departamento:</strong></td>
-							<td><%= payment.billingAddress.apartment %></td>
-						</tr>
-						<% } %>
-					</table>
-				</div>
-	
-		</div>
-	</div>
-		<h4 class="text-center"> <i class="icon-envelope"></i> Contacto</h4>
-		<div class="well" id="conf-contact-div">
-			<div class="row-fluid less-important">
-				<div class="span12 conf-contact-less">
-					<table class="table table-bordered">
-						<tr>
-							<td><strong>Mail:</strong></td>
-							<td><%= contact.email %></td>
-						</tr>
-						<tr>
-							<td><strong>Teléfono:</strong></td>
-							<td><%= contact.phone1 %></td>
-						</tr>
-						<tr>
-							<td><strong>Teléfono(Alternativo):</strong></td>
-							<td><%= contact.phone2 %></td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<h4 class="text-center"> <i class="icon-money"></i> Precios</h4>
-		<div class="well" id="conf-pay-div">
-			<div class="row-fluid less-important conf-pay-less">
-				<% if (outbound !== undefined) { %>
-				<div class="span6">
-					<table class="table table-bordered">
-						<% if (price.adults > 0) { %>
-						<tr>
-							<td class="table-min"><strong>Adultos (<%= adults %>)</strong></td>
-							<td class="table-min">U$S <%= price.adults %></td>
-						</tr>
-						<% } %>
-						<% if (price.children > 0) { %>
-						<tr>
-							<td class="table-min"><strong>Niños (<%= children %>)</strong></td>
-							<td class="table-min">U$S <%= price.children %></td>
-						</tr>
-						<% } %>
-						<% if (price.infants > 0) { %>
-						<tr>
-							<td class="table-min"><strong>Infantes (<%= infants %>)</strong></td>
-							<td class="table-min">U$S <%= price.infants %></td>
-						</tr>
-						<% } %>
-						<tr>
-							<td class="table-min"><strong>Subtotal</strong></td>
-							<td class="table-min">U$S <%= price.subtotal %></td>
-						</tr>
-						<tr>
-							<td class="table-min"><strong>Imp. y Tasas</strong></td>
-							<td class="table-min">U$S <%= price.taxes %></td>
-						</tr>	
-					</table>
-				</div>
-				<% } %>
-			</div>
-			<div class="row-fluid conf-pay-less">						
-				<h4 class="pull-right">Total: U$S <%= price.total %></h4>
-			</div>
-		</div>
-	</script>
-
-	<script src="js/jquery.js"></script>
-  	<script src="js/autocomplete-city-address.js"></script>
+{% block common_scripts %}
+    <script src="js/jquery.js"></script>
+    <script src="js/autocomplete-city-address.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/jquery.filter_input.js"></script>
     <script src="js/jquery.cookie.js"></script>
     <script src="js/bootstrap.min.js"></script>
-   	<script src='js/jquery.mtz.monthpicker.js'></script>
-   	<script src='js/monthyearcalendar.js'></script>
-   	<script src="js/validations.js"></script>
-   	<script src="js/common.js"></script>
-   	<script src="js/underscore-min.js"></script>
-   	<script src="js/backbone.js"></script>
-   	<script src="js/model.js"></script>
+    <script src='js/jquery.mtz.monthpicker.js'></script>
+    <script src='js/monthyearcalendar.js'></script>
+    <script src="js/validations.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/underscore-min.js"></script>
+    <script src="js/backbone.js"></script>
+    <script src="js/model.js"></script>
     <script src="js/views.js"></script>
-    <script src="js/bookmodel.js"></script>    
+    <script src="js/bookmodel.js"></script>
     <script src="js/bookviews.js"></script>
     <script src="js/confirmacion.js"></script>
     <script src="js/resumen.js"></script>
-</body>
-</html>
+{% endblock common_scripts %}

@@ -22,7 +22,6 @@ function validCity(v) {
 }
 
 function fillCities(data) {
-    console.log(data);
     if(!data.hasOwnProperty("error")) {
         for (var i=0; i < data.total; i++){
             cities[i] = data.cities[i].name;
