@@ -202,7 +202,9 @@
             ViewHandler.prototype.initialize.apply(this, [{
                 views: passengerViews,
                 confirm: function () {
-                    window.location.href = "ingresoinfopago.html";
+                    var redirect = $("#passenger-div #submit").attr("href");
+                    console.log(redirect);
+                    window.location.href = redirect;
                 }
             }]);
         },

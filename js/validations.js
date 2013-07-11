@@ -186,7 +186,7 @@ $(document).ready(function() {
         return (elem.val() !=='');
     }
 
-    function validateCreditCardNumber(elem){
+    function validateCreditCardNumber(elem) {
         var t = $("#ccvisa").val();
         var start = elem.val().substr(0,2);
         var valid;
@@ -207,7 +207,7 @@ $(document).ready(function() {
         }
         return valid;
     }
-    function validateCreditCardSecCode(elem){
+    function validateCreditCardSecCode(elem) {
         var t = $("#ccvisa").val();
         var valid;
         switch(t) {
