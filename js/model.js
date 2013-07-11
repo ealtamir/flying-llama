@@ -1,4 +1,3 @@
-
 Persistent = Backbone.Model.extend({
     initialize: function(attributes, options) {
         if (options !== undefined &&
@@ -9,6 +8,8 @@ Persistent = Backbone.Model.extend({
     },
     cookieSave: function(cookieName) {
         $.cookie(cookieName, JSON.stringify(this.toJSON()));
+        //console.log($.cookie());
+        //console.log('cookie read');
     },
 
     cookieLoad: function(cookieName) {
@@ -340,6 +341,7 @@ SearchResults = Backbone.Model.extend({
 
     getNumFlights: function () {
         var data = this.get("data");
+        console.log(data);
         if (data !== undefined && data.flights)
             return data.total;
         else

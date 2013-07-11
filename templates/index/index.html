@@ -5,7 +5,7 @@
 {% endblock header_stylesheets %}
 
 {% block content %}
-    <div class="span8">
+    <div id="search-div" class="span8">
          <div class="block main-panel" id="panel-index">
              <h2 class="text-center">
                 <i class="icon-plane"></i>
@@ -120,10 +120,12 @@
             </form>
         </div>
     </div>
-    {% include "index/ticket_sales.html" %}
 
-    {% block footer_scripts %}
-        <script src="js/index.js"></script>
-        <script src="js/deals.js"></script>
-    {% endblock footer_scripts %}
+    {% include "index/ticket_sales.html" %}
 {% endblock content %}
+
+{% block footer_scripts %}
+    <script src="js/index.js"></script>
+    <script src="js/deals.js"></script>
+{% endblock footer_scripts %}
+
